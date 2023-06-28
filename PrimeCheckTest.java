@@ -22,7 +22,8 @@ public class PrimeCheckTest {
   public static void init() {
     try {
       primes = Arrays.stream(Files.readString(Path.of("primes.txt")).split("\n")).mapToInt(e -> Integer.parseInt(e)).toArray();
-      nonPrimes = IntStream.range(0, 100000).filter(e -> IntStream.of(primes).anyMatch(f -> f != e)).toArray();
+      nonPrimes = IntStream.range(0, 100000).filter(e -> !IntStream.of(primes).anyMatch(f -> f == e)).toArray();
+      System.out.println(Arrays.toString(nonPrimes));
     } catch (Exception ignored) {}
 
   }
@@ -47,7 +48,7 @@ public class PrimeCheckTest {
   @Test
   public void testPrimes() {
     for (int i : primes) {
-      assertEquals(i + "should is a prime", true, PrimeCheck.isPrime(i));
+      assertEquals(i + " should is a prime", true, PrimeCheck.isPrime(i));
     }
   }
 
@@ -56,6 +57,6 @@ public class PrimeCheckTest {
   public void testNonPrimes() {
     /* ToDo: insert a test here */
     for (int i : nonPrimes) {
-      assertEquals(i + "is not a prime", false, PrimeCheck.isPrime(i));
+      assertEquals(i + " is not a prime", false, PrimeCheck.isPrime(i));
     }  }
 }
