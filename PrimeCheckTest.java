@@ -43,7 +43,7 @@ public class PrimeCheckTest {
   @Test
   public void testPrimes() {
     for (int i : primes) {
-      assertEquals(true, PrimeCheck.isPrime(i))
+      assertEquals(true, PrimeCheck.isPrime(i));
     }
   }
 
@@ -52,6 +52,6 @@ public class PrimeCheckTest {
   public void testNonPrimes() {
     /* ToDo: insert a test here */
     for (int i : nonPrimes) {
-      assertEquals(false, PrimeCheck.isPrime(i))
+      assertEquals(false, PrimeCheck.isPrime(i));
     }  }
 }
