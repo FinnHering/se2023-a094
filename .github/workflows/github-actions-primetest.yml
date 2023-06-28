@@ -25,7 +25,7 @@ jobs:
         java-version: '17'
 
     - name: install JUnit
-      run: sudo apt install junit4
+      run: sudo apt install junit5
 
     - name: build files
       run: javac -cp .:/usr/share/java/junit5.jar PrimeCheck.java PrimeCheckTest.java
