@@ -22,7 +22,7 @@ public class PrimeCheckTest {
   public static void init() {
     try {
       primes = Arrays.stream(Files.readString(Path.of("primes.txt")).split("\n")).mapToInt(e -> Integer.parseInt(e)).toArray();
-      nonPrimes = IntStream.range(0, 100000).filter(e -> IntStream.of(primes).anyMatch(f -> f == e)).toArray();
+      nonPrimes = IntStream.range(0, 100000).filter(e -> IntStream.of(primes).anyMatch(f -> f != e)).toArray();
     } catch (Exception ignored) {}
 
   }
