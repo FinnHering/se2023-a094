@@ -11,13 +11,14 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import org.junit.Test;
+import org.junit.BeforeClass;
 
 public class PrimeCheckTest {
 
   private static int[] primes;
   private static int[] nonPrimes;
 
-  @Before
+  @BeforeClass
   public static void init() {
     primes = Arrays.stream(Files.readString(Path.of("primes.txt")).split("\n")).mapToInt(e -> Integer.parseInt(e)).toArray();
     nonPrimes = IntStream.range(0, 20000).filter(e -> IntStream.of(primes).anyMatch(f -> f == e)).toArray();
