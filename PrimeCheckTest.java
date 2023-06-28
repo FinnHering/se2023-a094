@@ -1,8 +1,28 @@
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
+
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
 import org.junit.Test;
 
 public class PrimeCheckTest {
+
+  private int[] primes;
+  private int[] nonPrimes;
+
+  @BeforeClass
+  public void init() {
+    primes = Arrays.stream(Files.readString(Path.of("primes.txt")).split("\n")).mapToInt(e -> Integer.parseInt(e)).toArray();
+    nonPrimes = IntStream.range(0, 20000).filter(e -> IntStream.of(primes).anyMatch(f -> f == e)).toArray();
+  }
+
   // --------------------------------------------------------------- //
   @Test
   public void TestNegativeNumbers() {
@@ -22,14 +42,16 @@ public class PrimeCheckTest {
   // --------------------------------------------------------------- //
   @Test
   public void testPrimes() {
-    /* ToDo: insert a test here */
-    assertEquals("this will fail", true, false);
+    for (int i : primes) {
+      assertEquals(true, PrimeCheck.isPrime(i))
+    }
   }
 
   // --------------------------------------------------------------- //
   @Test
   public void testNonPrimes() {
     /* ToDo: insert a test here */
-    assertEquals("this will fail", true, false);
-  }
+    for (int i : nonPrimes) {
+      assertEquals(false, PrimeCheck.isPrime(i))
+    }  }
 }
