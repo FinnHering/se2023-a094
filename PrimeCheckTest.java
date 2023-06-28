@@ -20,8 +20,11 @@ public class PrimeCheckTest {
 
   @BeforeClass
   public static void init() {
-    primes = Arrays.stream(Files.readString(Path.of("primes.txt")).split("\n")).mapToInt(e -> Integer.parseInt(e)).toArray();
-    nonPrimes = IntStream.range(0, 20000).filter(e -> IntStream.of(primes).anyMatch(f -> f == e)).toArray();
+    try {
+      primes = Arrays.stream(Files.readString(Path.of("primes.txt")).split("\n")).mapToInt(e -> Integer.parseInt(e)).toArray();
+      nonPrimes = IntStream.range(0, 20000).filter(e -> IntStream.of(primes).anyMatch(f -> f == e)).toArray();
+    } catch (Exception ignored) {}
+
   }
 
   // --------------------------------------------------------------- //
