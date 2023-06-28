@@ -14,8 +14,8 @@ import org.junit.Test;
 
 public class PrimeCheckTest {
 
-  private int[] primes;
-  private int[] nonPrimes;
+  private static int[] primes;
+  private static int[] nonPrimes;
 
   @BeforeClass
   public static void init() {
